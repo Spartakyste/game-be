@@ -2,20 +2,36 @@
 const chalk = require('chalk');
 
 class Chalk {
-    static Important(msg) {
-        return console.log(chalk.redBright(msg));
+    static Important(elementOne, elementTwo) {
+        if (elementOne && elementTwo) {
+            return console.log(`${elementOne} --> `, chalk.redBright(elementTwo));
+        }
+
+        return console.log(chalk.redBright(elementOne));
     }
 
-    static Good(msg) {
-        return console.log(chalk.green(msg));
+    static Good(elementOne, elementTwo) {
+        if (elementOne && elementTwo) {
+            return console.log(`${elementOne} --> `, chalk.green(elementTwo));
+        }
+
+        return console.log(chalk.green(elementOne));
     }
 
-    static Blue(msg) {
-        return console.log(chalk.blue(msg));
+    static Blue(elementOne, elementTwo) {
+        if (elementOne && elementTwo) {
+            return console.log(`${elementOne} --> `, chalk.blue(elementTwo));
+        }
+
+        return console.log(chalk.blue(elementOne));
     }
 
-    static Debug(msg) {
-        return console.log(chalk.magenta(msg));
+    static Debug(elementOne, elementTwo) {
+        if (elementOne && elementTwo) {
+            return console.log(`${elementOne} --> `, chalk.magenta(elementTwo));
+        }
+
+        return console.log(chalk.magenta(elementOne));
     }
 }
 
