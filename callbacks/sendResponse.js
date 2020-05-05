@@ -1,11 +1,11 @@
 const successCbk = (res, status, data) => {
-    res.status(status).json({
+    return res.status(status).json({
         message: data
     });
 };
 
 const errorCbk = (res, status, data) => {
-    res.status(status).json({
+    return res.status(status).json({
         message: data
     });
 };
