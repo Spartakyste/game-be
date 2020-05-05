@@ -1,15 +1,17 @@
-const successCbk = (res, status, data) => {
-    return res.status(status).json({
-        message: data
-    });
-};
+const Chalk = require('../helpers/ChalkLogs');
 
-const errorCbk = (res, status, data) => {
+const successCbk = (res, status, data) => res.status(status).json({
+    data,
+});
+
+const errorCbk = (res, status, error) => {
+    Chalk.Important(error);
+
     return res.status(status).json({
-        message: data
+        error: error.message,
     });
 };
 module.exports = {
     successCbk,
-    errorCbk
+    errorCbk,
 };

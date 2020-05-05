@@ -17,7 +17,6 @@ router.get('/', async (req, res) => {
 
         return successCbk(res, 200, user);
     } catch (error) {
-        Chalk.Debug(error);
         return errorCbk(res, 400, error);
     }
 });
