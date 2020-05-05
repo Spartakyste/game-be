@@ -30,7 +30,7 @@ mongoose.connect('mongodb://localhost:27017/Game', {
     useCreateIndex: true,
 }, (err) => {
     if (err) Chalk.Important('Connection to the database failed');
-    else Chalk.Good('Connection to the database succeed');
+    else Chalk.Good('Connection to the database succeeded');
 });
 
 
@@ -39,8 +39,9 @@ mongoose.connect('mongodb://localhost:27017/Game', {
 app.listen(port, () => Chalk.Blue(`Game back-end running on ${port}!`));
 
 //! Debugging purpose only.
-// app.get("*", (req, res) => {
+// app.use((req, res, next) => {
 //     console.log('Url requested', req.originalUrl);
+//     next();
 // });
 
 //* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ APP ROUTES @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
