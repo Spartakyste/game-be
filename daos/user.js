@@ -8,5 +8,5 @@ const add = (user) => new User(user).save();
 
 module.exports = {
     get,
-    add
-}
+    add,
+};

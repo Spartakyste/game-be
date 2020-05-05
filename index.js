@@ -3,10 +3,11 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
 
-const { ChalkBlue, ChalkImportant, ChalkGood, ChalkDebug } = require('./helpers/ChalkLogs')
+const Chalk = require('./helpers/ChalkLogs');
 
 const config = require('./configuration/conf.json');
-const port = config.application.port;
+
+const { port } = config.application;
 
 const app = express();
 const user = require('./routes/user');
@@ -16,26 +17,26 @@ const user = require('./routes/user');
 app.use(bodyParser.json());
 
 app.use(cors({
-    origin: config.cors
+    origin: config.cors,
 }));
 
 
 //* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ DATABASE @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 
-mongoose.connect("mongodb://localhost:27017/Game", {
+mongoose.connect('mongodb://localhost:27017/Game', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    useCreateIndex: true
-}, function (err, db) {
-    if (err) ChalkImportant("Connection to the database failed");
-    else ChalkGood("Connection to the database succeed");
+    useCreateIndex: true,
+}, (err) => {
+    if (err) Chalk.Important('Connection to the database failed');
+    else Chalk.Good('Connection to the database succeed');
 });
 
 
 //* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ APP INIT @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
-app.listen(port, () => ChalkBlue(`Game back-end running on ${port}!`));
+app.listen(port, () => Chalk.Blue(`Game back-end running on ${port}!`));
 
 //! Debugging purpose only.
 // app.get("*", (req, res) => {
@@ -45,6 +46,3 @@ app.listen(port, () => ChalkBlue(`Game back-end running on ${port}!`));
 //* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ APP ROUTES @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 app.use('/user', user);
-
-
-

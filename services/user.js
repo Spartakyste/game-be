@@ -6,5 +6,5 @@ const add = (user) => UserDAO.add(user);
 
 module.exports = {
     get,
-    add
-}
+    add,
+};

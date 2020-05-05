@@ -1,16 +1,23 @@
+/* eslint-disable no-console */
 const chalk = require('chalk');
 
-const ChalkImportant = (msg) => console.log(chalk.redBright(msg));
+class Chalk {
+  static Important(msg) {
+    return console.log(chalk.redBright(msg));
+  }
 
-const ChalkGood = (msg) => console.log(chalk.green(msg));
+  static Good(msg) {
+    return console.log(chalk.green(msg));
+  }
 
-const ChalkBlue = (msg) => console.log(chalk.blue(msg));
+  static Blue(msg) {
+    return console.log(chalk.blue(msg));
+  }
 
-const ChalkDebug = (msg) => console.log(chalk.magenta(msg));
- 
-module.exports = {
-    ChalkBlue,
-    ChalkGood,
-    ChalkImportant,
-    ChalkDebug
+  static Debug(msg) {
+    return console.log(chalk.magenta(msg));
+  }
 }
+
+
+module.exports = Chalk;

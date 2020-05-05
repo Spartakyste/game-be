@@ -1,6 +1,7 @@
 const express = require('express');
+
 const router = express.Router();
-const { ChalkDebug } = require('../helpers/ChalkLogs')
+const Chalk = require('../helpers/ChalkLogs');
 const { successCbk, errorCbk } = require('../callbacks/sendResponse');
 
 const UserService = require('../services/user');
@@ -10,15 +11,14 @@ router.get('/', async (req, res) => {
     const { id } = req.body;
 
     try {
-
-        if (!id) throw "You must pass an id";
+        if (!id) throw new Error('You must pass an id');
 
         const user = await UserService.get(id);
-        console.log('user', user)
+
         return successCbk(res, 200, user);
     } catch (error) {
-        ChalkDebug(error)
-        return errorCbk(res, 400, error)
+        Chalk.Debug(error);
+        return errorCbk(res, 400, error);
     }
 });
 
@@ -27,11 +27,12 @@ router.post('/', async (req, res) => {
 
     try {
         const newUser = await UserService.add(user);
-        ChalkDebug(newUser)
+
+        Chalk.Debug(newUser);
         return successCbk(res, 200, newUser);
     } catch (error) {
-        return errorCbk(res, 400, error)
+        return errorCbk(res, 400, error);
     }
 });
 
-module.exports = router
+module.exports = router;
