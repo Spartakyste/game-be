@@ -12,6 +12,7 @@ const { port } = config.application;
 const app = express();
 const user = require('./routes/user');
 
+
 //* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ MISCELLANEOUS @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 app.use(bodyParser.json());
@@ -40,7 +41,7 @@ app.listen(port, () => Chalk.Blue(`Game back-end running on ${port}!`));
 
 //! Debugging purpose only.
 // app.use((req, res, next) => {
-//     console.log('Url requested', req.originalUrl);
+//     Chalk.Debug('Url requested', req.originalUrl);
 //     next();
 // });
 

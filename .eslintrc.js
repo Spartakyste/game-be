@@ -15,6 +15,8 @@ module.exports = {
     ecmaVersion: 2018,
   },
   rules: {
-    "indent": ["error", 4]
+    "max-len": ["error", 150],
+    "indent": ["error", 4],
+    "radix": "off"
   },
 };

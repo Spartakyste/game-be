@@ -4,6 +4,7 @@ const router = express.Router();
 
 const Chalk = require('../helpers/ChalkLogs');
 const { successCbk, errorCbk } = require('../callbacks/sendResponse');
+const ELevels = require('../enums/ELevels');
 
 const UserService = require('../services/user');
 
@@ -17,6 +18,18 @@ router.get('/', async (req, res) => {
         const user = await UserService.get(id);
 
         return successCbk(res, 200, user);
+    } catch (error) {
+        return errorCbk(res, 400, error);
+    }
+});
+
+router.get('/levels', async (req, res) => {
+    // const { id } = req.body;
+
+    try {
+        // const user = await UserService.get(id);
+
+        return successCbk(res, 200, ELevels);
     } catch (error) {
         return errorCbk(res, 400, error);
     }
